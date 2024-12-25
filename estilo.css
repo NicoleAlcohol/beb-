@@ -90,7 +90,7 @@ footer {
     left: 50%;
     width: 600px;
     height: 600px;
-    background: url('gato 3.gif') no-repeat;
+    background: url('gato 3.gif') repeat-y;
     background-size: contain;
     transform: translate(-50%, -50%); 
 }
