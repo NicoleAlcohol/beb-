@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Bebé</title>
+    <link rel="stylesheet" href="estilo.css">
+    <!-- Agregar fuente Comic Sans -->
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        /* Ajustes generales para la página */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fcf195; /* Rosa pastel */
+            overflow: auto;
+        }
+
+        header {
+            text-align: center;
+            color: #ff69b4;
+            padding: 20px;
+            font-size: 2em;
+        }
+
+        footer {
+            text-align: center;
+            color: #ff69b4;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .contenido {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            margin-bottom: 100px; /* Espacio para los mensajes y corazoncitos */
+        }
+
+        /* Fondo de los mensajes */
+        .mensaje {
+            position: absolute;
+            font-size: 2em;
+            color: #ff69b4;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: rgb(255, 230, 5); /* Fondo translúcido */
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        /* Estilo del botón de corazón */
+        #boton-corazon {
+            margin-top: 20px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px #ff1493;
+        }
+
+        #boton-corazon:active {
+            box-shadow: 0 2px #ff1493;
+            transform: translateY(3px);
+        }
+
+        /* GIFs en los bordes */
+        .borde-gifs {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Animación de los corazones que saltan */
+        @keyframes moverCorazon {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>te amo mucho bebé 😍</h1>
+    </header>
+
+    <main>
+        <div class="borde-gifs">
+            <div class="gif-izquierda"></div>
+            <div class="gif-middle"></div>
+            <div class="gif-derecha"></div>
+        </div>
+
+        <section class="contenido">
+            <div class="marco-corazon">
+                <div class="video-en-corazon">
+                <video width="100%" height="100%" controls>
+                    <source src="My Video.mp4" type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- Botón para interacción -->
+            <button id="boton-corazon">💖</button>
+            <div id="mensajes"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Gracias por todo, por absolutamente todo ❤️</p>
+        <p></p>no podía hostear un video FULL HD 4K. Te amo mi amor besitos</p>
+        <a href="https://www.youtube.com/watch?v=oUlj3bCMX50" target="_blank">
+            <button>Apretá acá para verlo COMPLETO y en la calidad que se merece.</button>
+        </a>
+        
+    </footer>
+
+    <script>
+        let contador = 0; // Para llevar el control de los clics
+        const botonCorazon = document.getElementById("boton-corazon");
+
+        botonCorazon.addEventListener("click", () => {
+            contador++;
+            
+            // Cambiar el mensaje dependiendo del número de clics
+            if (contador === 1) {
+                mostrarMensaje("te", "left");
+            } else if (contador === 2) {
+                mostrarMensaje("amo", "center");
+            } else if (contador === 3) {
+                mostrarMensaje("muchísimo", "right");
+            } else if (contador === 4) {
+                mostrarCorazoncitos();
+                contador = 0; // Reiniciar el contador después del cuarto clic
+            }
+        });
+
+        // Función para mostrar el mensaje en una posición específica
+        function mostrarMensaje(mensaje, posicion) {
+            const nuevoMensaje = document.createElement("div");
+            nuevoMensaje.textContent = mensaje;
+            nuevoMensaje.classList.add("mensaje");
+
+            // Ubicar los mensajes en la parte inferior
+            if (posicion === "left") {
+                nuevoMensaje.style.left = "10%";
+                nuevoMensaje.style.bottom = "-230px"; // Ajustar la posición inferior
+            } else if (posicion === "center") {
+                nuevoMensaje.style.left = "50%";
+                nuevoMensaje.style.bottom = "-230px"; 
+                nuevoMensaje.style.transform = "translateX(-50%)";
+            } else if (posicion === "right") {
+                nuevoMensaje.style.right = "10%";
+                nuevoMensaje.style.bottom = "-230px"; 
+            }
+            
+            document.body.appendChild(nuevoMensaje);
+        }
+
+        // Función para mostrar los corazoncitos
+        function mostrarCorazoncitos() {
+            for (let i = 0; i < 50; i++) {
+                const corazon = document.createElement("span");
+                corazon.textContent = "💖";
+                corazon.style.position = "absolute";
+                corazon.style.fontSize = `${Math.random() * 30 + 20}px`; // Tamaño aleatorio
+                corazon.style.color = "#ff1493";
+                corazon.style.top = `${Math.random() * window.innerHeight}px`;
+                corazon.style.left = `${Math.random() * window.innerWidth}px`;
+                corazon.style.animation = "moverCorazon 3s ease-out forwards";
+                
+                document.body.appendChild(corazon);
+                
+                // Eliminar el corazón después de la animación
+                setTimeout(() => {
+                    corazon.remove();
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
