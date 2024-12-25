@@ -1,188 +1,155 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hola Bebé</title>
-    <link rel="stylesheet" href="estilo.css">
-    <!-- Agregar fuente Comic Sans -->
-    <style>
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-        }
-        /* Ajustes generales para la página */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #fcf195; /* Rosa pastel */
-            overflow: auto;
-        }
+/* Estilo general */
+.aviso {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(255, 99, 71, 0.8); /* Color naranja con opacidad */
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    z-index: 1000;
+}
 
-        header {
-            text-align: center;
-            color: #ff69b4;
-            padding: 20px;
-            font-size: 2em;
-        }
+.aviso button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
 
-        footer {
-            text-align: center;
-            color: #ff69b4;
-            margin-top: 20px;
-            font-size: 1.2em;
-        }
+.aviso button:hover {
+    background-color: #ff1493;
+}
 
-        .contenido {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            margin-bottom: 100px; /* Espacio para los mensajes y corazoncitos */
-        }
+.aviso p {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #fcf195; /* Rosa pastel */
+    margin: 0;
+    padding: 0;
+    overflow: auto; /* Permitir scroll para contenidos largos */
+}
 
-        /* Fondo de los mensajes */
-        .mensaje {
-            position: absolute;
-            font-size: 2em;
-            color: #ff69b4;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: rgb(255, 230, 5); /* Fondo translúcido */
-            padding: 10px;
-            border-radius: 10px;
-        }
+header {
+    text-align: center;
+    color: #ff69b4; /* Rosa fuerte */
+    padding: 20px;
+    font-size: 2em;
+}
 
-        /* Estilo del botón de corazón */
-        #boton-corazon {
-            margin-top: 20px;
-            background-color: #ff69b4;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1.5em;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 5px #ff1493;
-        }
+footer {
+    text-align: center;
+    color: #ff69b4;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
 
-        #boton-corazon:active {
-            box-shadow: 0 2px #ff1493;
-            transform: translateY(3px);
-        }
+/* Bordes con GIFs */
+.borde-gifs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Los GIFs no interferirán con el contenido principal */
+    z-index: -1; /* Detrás del contenido */
+}
 
-        /* GIFs en los bordes */
-        .borde-gifs {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
+.gif-izquierda {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 350px;
+    height: 100%; /* Cubrir todo el contenido */
+    background: url('gato 1.gif') repeat-y;
+    background-size: contain;
+}
 
-        /* Animación de los corazones que saltan */
-        @keyframes moverCorazon {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: translateY(-100px) scale(0); opacity: 0; }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>te amo mucho bebé 😍</h1>
-    </header>
+.gif-derecha {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%; /* Cubrir todo el contenido */
+    background: url('gato 2.gif') repeat-y;
+    background-size: contain;
+}
 
-    <main>
-        <div class="borde-gifs">
-            <div class="gif-izquierda"></div>
-            <div class="gif-middle"></div>
-            <div class="gif-derecha"></div>
-        </div>
+.gif-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: url('gato 3.gif') no-repeat;
+    background-size: contain;
+    transform: translate(-50%, -50%); /* Centrar el GIF */
+}
 
-        <section class="contenido">
-            <div class="marco-corazon">
-                <div class="video-en-corazon">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/oUlj3bCMX50" 
-                        title="Video romántico" frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
-                </div>
-            </div>
+/* Contenido principal */
+.contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+}
 
-            <!-- Botón para interacción -->
-            <button id="boton-corazon">💖</button>
-            <div id="mensajes"></div>
-        </section>
-    </main>
+.marco-corazon {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background: url('clipart599781.png') no-repeat center center;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    <footer>
-        <p>Gracias por todo, por absolutamente todo ❤️</p>
-    </footer>
+.video-en-corazon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 270px; /* Ajustado al marco */
+    height: 190px; /* Ajustado al marco */
+    transform: translate(-50%, -50%) rotate(-5deg); /* Centrar dentro del corazón y rotar */
+    background: transparent;
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
 
-    <script>
-        let contador = 0; // Para llevar el control de los clics
-        const botonCorazon = document.getElementById("boton-corazon");
+/* Botón interactivo */
+#boton-corazon {
+    margin-top: 20px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px #ff1493;
+}
 
-        botonCorazon.addEventListener("click", () => {
-            contador++;
-            
-            // Cambiar el mensaje dependiendo del número de clics
-            if (contador === 1) {
-                mostrarMensaje("te", "left");
-            } else if (contador === 2) {
-                mostrarMensaje("amo", "center");
-            } else if (contador === 3) {
-                mostrarMensaje("muchísimo", "right");
-            } else if (contador === 4) {
-                mostrarCorazoncitos();
-                contador = 0; // Reiniciar el contador después del cuarto clic
-            }
-        });
+#boton-corazon:active {
+    box-shadow: 0 2px #ff1493;
+    transform: translateY(3px);
+}
 
-        // Función para mostrar el mensaje en una posición específica
-        function mostrarMensaje(mensaje, posicion) {
-            const nuevoMensaje = document.createElement("div");
-            nuevoMensaje.textContent = mensaje;
-            nuevoMensaje.classList.add("mensaje");
-
-            // Ubicar los mensajes en la parte inferior
-            if (posicion === "left") {
-                nuevoMensaje.style.left = "10%";
-                nuevoMensaje.style.bottom = "-230px"; // Ajustar la posición inferior
-            } else if (posicion === "center") {
-                nuevoMensaje.style.left = "50%";
-                nuevoMensaje.style.bottom = "-230px"; 
-                nuevoMensaje.style.transform = "translateX(-50%)";
-            } else if (posicion === "right") {
-                nuevoMensaje.style.right = "10%";
-                nuevoMensaje.style.bottom = "-230px"; 
-            }
-            
-            document.body.appendChild(nuevoMensaje);
-        }
-
-        // Función para mostrar los corazoncitos
-        function mostrarCorazoncitos() {
-            for (let i = 0; i < 50; i++) {
-                const corazon = document.createElement("span");
-                corazon.textContent = "💖";
-                corazon.style.position = "absolute";
-                corazon.style.fontSize = `${Math.random() * 30 + 20}px`; // Tamaño aleatorio
-                corazon.style.color = "#ff1493";
-                corazon.style.top = `${Math.random() * window.innerHeight}px`;
-                corazon.style.left = `${Math.random() * window.innerWidth}px`;
-                corazon.style.animation = "moverCorazon 3s ease-out forwards";
-                
-                document.body.appendChild(corazon);
-                
-                // Eliminar el corazón después de la animación
-                setTimeout(() => {
-                    corazon.remove();
-                }, 3000);
-            }
-        }
-    </script>
-</body>
-</html>
+#mensajes {
+    margin-top: 20px;
+    color: #ff69b4;
+    font-size: 1.2em;
+    min-height: 30px;
+}
