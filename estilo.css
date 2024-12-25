@@ -1,0 +1,123 @@
+/* Estilo general */
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #fcf195; /* Rosa pastel */
+    margin: 0;
+    padding: 0;
+    overflow: auto; /* Permitir scroll para contenidos largos */
+}
+
+header {
+    text-align: center;
+    color: #ff69b4; /* Rosa fuerte */
+    padding: 20px;
+    font-size: 2em;
+}
+
+footer {
+    text-align: center;
+    color: #ff69b4;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+/* Bordes con GIFs */
+.borde-gifs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Los GIFs no interferirán con el contenido principal */
+    z-index: -1; /* Detrás del contenido */
+}
+
+.gif-izquierda {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 350px;
+    height: 100%; /* Cubrir todo el contenido */
+    background: url('gato 1.gif') repeat-y;
+    background-size: contain;
+}
+
+.gif-derecha {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%; /* Cubrir todo el contenido */
+    background: url('gato 2.gif') repeat-y;
+    background-size: contain;
+}
+
+.gif-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: url('gato 3.gif') no-repeat;
+    background-size: contain;
+    transform: translate(-50%, -50%); /* Centrar el GIF */
+}
+
+/* Contenido principal */
+.contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.marco-corazon {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background: url('clipart599781.png') no-repeat center center;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-en-corazon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 270px; /* Ajustado al marco */
+    height: 190px; /* Ajustado al marco */
+    transform: translate(-50%, -50%) rotate(-5deg); /* Centrar dentro del corazón y rotar */
+    background: transparent;
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Botón interactivo */
+#boton-corazon {
+    margin-top: 20px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px #ff1493;
+}
+
+#boton-corazon:active {
+    box-shadow: 0 2px #ff1493;
+    transform: translateY(3px);
+}
+
+#mensajes {
+    margin-top: 20px;
+    color: #ff69b4;
+    font-size: 1.2em;
+    min-height: 30px;
+}
