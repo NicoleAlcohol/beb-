@@ -1,155 +1,233 @@
-/* Estilo general */
-.aviso {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    background-color: rgba(255, 99, 71, 0.8); /* Color naranja con opacidad */
-    color: white;
-    text-align: center;
-    font-size: 1.5em;
-    z-index: 1000;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Bebé</title>
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fcf195; /* Rosa pastel */
+            overflow: auto;
+        }
 
-.aviso button {
-    background-color: #ff69b4;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-top: 10px;
-}
+        header {
+            text-align: center;
+            color: #ff69b4;
+            padding: 20px;
+            font-size: 2em;
+        }
 
-.aviso button:hover {
-    background-color: #ff1493;
-}
+        footer {
+            text-align: center;
+            color: #ff69b4;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
 
-.aviso p {
-    margin: 0;
-    padding: 0;
-}
-body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    background-color: #fcf195; /* Rosa pastel */
-    margin: 0;
-    padding: 0;
-    overflow: auto; /* Permitir scroll para contenidos largos */
-}
+        .contenido {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            margin-bottom: 100px;
+        }
 
-header {
-    text-align: center;
-    color: #ff69b4; /* Rosa fuerte */
-    padding: 20px;
-    font-size: 2em;
-}
+        .mensaje {
+            position: absolute;
+            font-size: 2em;
+            color: #ff69b4;
+            background-color: rgb(255, 230, 5); /* Fondo translúcido */
+            padding: 10px;
+            border-radius: 10px;
+        }
 
-footer {
-    text-align: center;
-    color: #ff69b4;
-    margin-top: 20px;
-    font-size: 1.2em;
-}
+        #boton-corazon {
+            margin-top: 20px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px #ff1493;
+        }
 
-/* Bordes con GIFs */
-.borde-gifs {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Los GIFs no interferirán con el contenido principal */
-    z-index: -1; /* Detrás del contenido */
-}
+        #boton-corazon:active {
+            box-shadow: 0 2px #ff1493;
+            transform: translateY(3px);
+        }
 
-.gif-izquierda {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 350px;
-    height: 100%; /* Cubrir todo el contenido */
-    background: url('gato 1.gif') repeat-y;
-    background-size: contain;
-}
+        .borde-gifs {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
 
-.gif-derecha {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 350px;
-    height: 100%; /* Cubrir todo el contenido */
-    background: url('gato 2.gif') repeat-y;
-    background-size: contain;
-}
+        @keyframes moverCorazon {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(0); opacity: 0; }
+        }
 
-.gif-middle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 600px;
-    height: 600px;
-    background: url('gato 3.gif') no-repeat;
-    background-size: contain;
-    transform: translate(-50%, -50%); /* Centrar el GIF */
-}
+        /* Estilo del aviso */
+        .aviso {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(255, 99, 71, 0.8); /* Color naranja con opacidad */
+            color: white;
+            text-align: center;
+            font-size: 1.5em;
+            z-index: 1000;
+        }
 
-/* Contenido principal */
-.contenido {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    text-align: center;
-}
+        .aviso button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
 
-.marco-corazon {
-    position: relative;
-    width: 400px;
-    height: 400px;
-    background: url('clipart599781.png') no-repeat center center;
-    background-size: contain;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .aviso button:hover {
+            background-color: #ff1493;
+        }
 
-.video-en-corazon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 270px; /* Ajustado al marco */
-    height: 190px; /* Ajustado al marco */
-    transform: translate(-50%, -50%) rotate(-5deg); /* Centrar dentro del corazón y rotar */
-    background: transparent;
-    border: none;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
+        .aviso p {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Aviso de página -->
+    <div id="aviso" class="aviso">
+        <p>⚠️ Esta página sugiere un tono sarcástico y debe tomarse como tal ⚠️</p>
+        <button id="cerrar-aviso">Cerrar</button>
+    </div>
 
-/* Botón interactivo */
-#boton-corazon {
-    margin-top: 20px;
-    background-color: #ff69b4;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.5em;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 5px #ff1493;
-}
+    <header>
+        <h1>te amo mucho bebé 😍</h1>
+    </header>
 
-#boton-corazon:active {
-    box-shadow: 0 2px #ff1493;
-    transform: translateY(3px);
-}
+    <main>
+        <div class="borde-gifs">
+            <div class="gif-izquierda"></div>
+            <div class="gif-middle"></div>
+            <div class="gif-derecha"></div>
+        </div>
 
-#mensajes {
-    margin-top: 20px;
-    color: #ff69b4;
-    font-size: 1.2em;
-    min-height: 30px;
-}
+        <section class="contenido">
+            <div class="marco-corazon">
+                <div class="video-en-corazon">
+                    <!-- Video local con rotación -->
+                    <video width="100%" height="100%" controls style="transform: rotate(-5deg);">
+                        <source src="My Video.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <!-- Botón para interacción -->
+            <button id="boton-corazon">💖</button>
+            <div id="mensajes"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Gracias por todo, por absolutamente todo ❤️</p>
+        <p>no podía hostear un video FULL HD 4K. Te amo mi amor besitos</p>
+        <a href="https://www.youtube.com/watch?v=oUlj3bCMX50" target="_blank">
+            <button>Apretá acá para verlo COMPLETO y en la calidad que se merece.</button>
+        </a>
+    </footer>
+
+    <script>
+        // Función para cerrar el aviso
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const aviso = document.getElementById('aviso');
+            const botonCerrar = document.getElementById('cerrar-aviso');
+    
+            botonCerrar.addEventListener('click', function() {
+                aviso.style.display = 'none'; // Ocultar el aviso cuando se hace clic
+            });
+        });
+
+        let contador = 0; // Para llevar el control de los clics
+        const botonCorazon = document.getElementById("boton-corazon");
+
+        botonCorazon.addEventListener("click", () => {
+            contador++;
+            
+            // Cambiar el mensaje dependiendo del número de clics
+            if (contador === 1) {
+                mostrarMensaje("te", "left");
+            } else if (contador === 2) {
+                mostrarMensaje("amo", "center");
+            } else if (contador === 3) {
+                mostrarMensaje("muchísimo", "right");
+            } else if (contador === 4) {
+                mostrarCorazoncitos();
+                contador = 0; // Reiniciar el contador después del cuarto clic
+            }
+        });
+
+        // Función para mostrar el mensaje en una posición específica
+        function mostrarMensaje(mensaje, posicion) {
+            const nuevoMensaje = document.createElement("div");
+            nuevoMensaje.textContent = mensaje;
+            nuevoMensaje.classList.add("mensaje");
+
+            // Ubicar los mensajes en la parte inferior
+            if (posicion === "left") {
+                nuevoMensaje.style.left = "10%";
+                nuevoMensaje.style.bottom = "-230px"; // Ajustar la posición inferior
+            } else if (posicion === "center") {
+                nuevoMensaje.style.left = "50%";
+                nuevoMensaje.style.bottom = "-230px"; 
+                nuevoMensaje.style.transform = "translateX(-50%)";
+            } else if (posicion === "right") {
+                nuevoMensaje.style.right = "10%";
+                nuevoMensaje.style.bottom = "-230px"; 
+            }
+            
+            document.body.appendChild(nuevoMensaje);
+        }
+
+        // Función para mostrar los corazoncitos
+        function mostrarCorazoncitos() {
+            for (let i = 0; i < 50; i++) {
+                const corazon = document.createElement("span");
+                corazon.textContent = "💖";
+                corazon.style.position = "absolute";
+                corazon.style.fontSize = `${Math.random() * 30 + 20}px`; // Tamaño aleatorio
+                corazon.style.color = "#ff1493";
+                corazon.style.top = `${Math.random() * window.innerHeight}px`;
+                corazon.style.left = `${Math.random() * window.innerWidth}px`;
+                corazon.style.animation = "moverCorazon 3s ease-out forwards";
+                
+                document.body.appendChild(corazon);
+                
+                // Eliminar el corazón después de la animación
+                setTimeout(() => {
+                    corazon.remove();
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
